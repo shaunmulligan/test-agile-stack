@@ -132,7 +132,7 @@ services:
 
   agile-security:
     image: agileiot/agile-security-armv7l:v3.3.0
-    command: AGILE_HOST=randomhostname.local && ./Start.sh
+    command: ["AGILE_HOST=randomhostname.local", "&&", "./Start.sh"]
     hostname: agile-security
     volumes:
       - agile-data-security-idm-conf:/root/idm.conf
