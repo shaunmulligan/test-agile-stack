@@ -138,7 +138,6 @@ services:
       - agile-data-security-idm-conf:/root/idm.db
     environment:
       - DOCKER_CONF=/root/idm.conf
-      - AGILE_HOST=randomhostname.local
     ports:
       - 3000:3000/tcp
       - 1444:1444/tcp
