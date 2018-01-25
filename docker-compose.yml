@@ -143,6 +143,7 @@ services:
       - 1444:1444/tcp
       - 1443:1443/tcp
     restart: always
+    entrypoint: ./opt/agile-idm-web-ui/Start.sh
 
   agile-data:
     image: agileiot/agile-data-armv7l:v0.0.9
