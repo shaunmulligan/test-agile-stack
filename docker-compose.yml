@@ -89,8 +89,9 @@ services:
       io.resin.features.kernel-modules: '1'
       io.resin.features.firmware: '1'
       io.resin.features.dbus: '1'
-    command: bash -c "mkdir -p /var/run/dbus && rm -f /var/run/dbus/pid && dbus-daemon --system && hciconfig hci0 down && hciconfig hci0 up && /usr/local/libexec/bluetooth/bluetoothd -E & scripts/start.sh BLE"
-
+    # command: bash -c "mkdir -p /var/run/dbus && rm -f /var/run/dbus/pid && dbus-daemon --system && hciconfig hci0 down && hciconfig hci0 up && /usr/local/libexec/bluetooth/bluetoothd -E & scripts/start.sh BLE"
+      command: ["sleep", "999999999"]
+      
   agile-dummy:
     image: agileiot/agile-dummy-armv7l:v0.2.3
     depends_on:
