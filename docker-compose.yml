@@ -119,7 +119,7 @@ services:
     ports:
       - 8000:8000/tcp
     restart: always
-    command: if [ ! -z "$RESIN" ] && [ ! -z "$RESIN_DEVICE_UUID" ]; then AGILE_HOST=${RESIN_DEVICE_UUID:0:7}.local; fi ; ./start.sh"
+    command: bash -c "if [ ! -z "$RESIN" ] && [ ! -z "$RESIN_DEVICE_UUID" ]; then AGILE_HOST=${RESIN_DEVICE_UUID:0:7}.local; fi ; ./start.sh"
 
   agile-nodered:
     image: agileiot/agile-nodered-armv7l:v0.2.0
