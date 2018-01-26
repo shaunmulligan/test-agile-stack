@@ -139,13 +139,13 @@ services:
       - agile-data-security-idm-conf:/root/idm.db
     environment:
       - DOCKER_CONF=/root/idm.conf
+      - AGILE_HOST=$AGILE_HOST
     ports:
       - 3000:3000/tcp
       - 1444:1444/tcp
       - 1443:1443/tcp
     restart: always
-    entrypoint: []
-    stop_signal: SIGTERM
+    command: bash -c "if [ ! -z "$RESIN" ] && [ ! -z "$RESIN_DEVICE_UUID" ]; then AGILE_HOST=${RESIN_DEVICE_UUID:0:7}.local; if ; ./Start.sh"
 
   agile-data:
     image: agileiot/agile-data-armv7l:v0.0.9
