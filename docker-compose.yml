@@ -82,6 +82,7 @@ services:
       - agile-dbus-dir:/usr/src/app/.agile_bus
     environment:
       DBUS_SESSION_BUS_ADDRESS: "unix:path=/usr/src/app/.agile_bus/agile_bus_socket"
+      DBUS_SYSTEM_BUS_ADDRESS: "unix:path=/host/run/dbus/system_bus_socket"
     restart: always
     privileged: true
     network_mode: "host"
@@ -89,8 +90,7 @@ services:
       io.resin.features.kernel-modules: '1'
       io.resin.features.firmware: '1'
       io.resin.features.dbus: '1'
-    # command: bash -c "mkdir -p /var/run/dbus && rm -f /var/run/dbus/pid && dbus-daemon --system && hciconfig hci0 down && hciconfig hci0 up && /usr/local/libexec/bluetooth/bluetoothd -E & scripts/start.sh BLE"
-    command: ["sleep", "99999999"]
+    command: bash -c "mkdir -p /var/run/dbus && rm -f /var/run/dbus/pid && dbus-daemon --system && hciconfig hci0 down && hciconfig hci0 up && /usr/local/libexec/bluetooth/bluetoothd -E & scripts/start.sh BLE"
 
   agile-dummy:
     image: agileiot/agile-dummy-armv7l:v0.2.3
