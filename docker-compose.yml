@@ -114,6 +114,7 @@ services:
     image: agileiot/agile-osjs-armv7l:v0.2.0
     depends_on:
       - agile-core
+      - agile-security
     environment:
       - AGILE_HOST=$AGILE_HOST
     ports:
